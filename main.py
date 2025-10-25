@@ -27,13 +27,14 @@ async def consultar_despesa(
     print(f"Recebida consulta para ano={ano}, funcao={funcao}, orgao={orgao}, acao={acao}")
 
     try:
-        # Chama a biblioteca 'orcamentobr'
+# Chama a biblioteca 'orcamentobr'
         dados_df = despesa_detalhada(
             exercicio=ano,
             funcao=funcao if funcao else False,
             orgao=orgao if orgao else False,
             acao=acao if acao else False,
-            inclui_descricoes=True
+            inclui_descricoes=True,
+            ignore_secure_certificate=True  # <-- ADICIONE ESTA LINHA
         )
 
         if dados_df.empty:
